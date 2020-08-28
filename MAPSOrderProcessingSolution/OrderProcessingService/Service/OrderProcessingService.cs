@@ -30,12 +30,18 @@ namespace OrderProcessingService
         //Process Order handle all kind of Orders .
         public List<string> ProcessOrder(Order order)
         {
-            foreach(IOrderProcessingRule rule in Rules)
+            //Clear all Rules Exceution Statuses
+            Constants.OrderStatuses.Clear();
+
+            // Going through Rules
+            foreach (IOrderProcessingRule rule in Rules)
             {
+                //Executing Rule
                 rule.ExecuteRule(order);
             }
 
-            return new List<string>();
+            //Return Rule Status 
+            return Constants.OrderStatuses;
         }
     }
 }
