@@ -20,6 +20,7 @@ namespace OrderProcessingService.Rules
             if (order.PType == PaymentType.Book)
             {
                 Constants.OrderStatuses.Add("Generate Dulicate Packing Slip");
+
             }
             //Payment is for PhysicalProduct or Book
             if (order.PType == PaymentType.PhysicalProduct || order.PType == PaymentType.Book)
