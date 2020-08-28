@@ -71,5 +71,26 @@ namespace OrderProcessingUnitTesting
             Assert.AreEqual(checkList[0], Constants.OrderStatuses[0]);
             Assert.AreEqual(checkList[1], Constants.OrderStatuses[1]);
         }
+
+        [TestMethod]
+        public void testRuleForUpgradeToMembership()
+        {
+            Order ord = new Order
+            {
+                OrderID = 001,
+                OrderDate = DateTime.Now,
+                PType = PaymentType.UpgradeMembership
+            };
+            OrderProcessing orderProcessingService = new OrderProcessing();
+            orderProcessingService.ProcessOrder(ord);
+            List<string> checkList = new List<string>()
+            {
+                "Membership Upgrade",
+                "Send Activation Email to User"
+            };
+
+            Assert.AreEqual(checkList[0], Constants.OrderStatuses[0]);
+            Assert.AreEqual(checkList[1], Constants.OrderStatuses[1]);
+        }
     }
 }
