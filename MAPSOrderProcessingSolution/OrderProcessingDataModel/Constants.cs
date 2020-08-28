@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OrderProcessingDataModel
 {
-    static class Constants
+    public static class Constants
     {
         public static List<string> OrderStatuses = new List<string>();
     }
