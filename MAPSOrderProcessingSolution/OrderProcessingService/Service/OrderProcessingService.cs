@@ -8,13 +8,13 @@ using OrderProcessingService.Rules;
 namespace OrderProcessingService
 {
     //Problem Statement 2 : Business Rule Engine for Order Processing 
-    public class OrderProcessingService : IOrderProcessing
+    public class OrderProcessing : IOrderProcessing
     {
         //Order Prcoessing List - Rules needs to be executed on Order
         List<IOrderProcessingRule> Rules = new List<IOrderProcessingRule>();
 
         //Constructor
-        public OrderProcessingService()
+        public OrderProcessing()
         {
             //Adding Physical Product Rule - Handle Physical Product & Book Payment type
             Rules.Add(new PhysicalProductRule());
