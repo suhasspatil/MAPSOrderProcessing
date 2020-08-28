@@ -29,5 +29,26 @@ namespace OrderProcessingUnitTesting
             Assert.AreEqual(checkList[0], Constants.OrderStatuses[0]);
             Assert.AreEqual(checkList[1], Constants.OrderStatuses[1]);
         }
+
+        [TestMethod]
+        public void testRulePaymentForBook()
+        {
+            Order ord = new Order
+            {
+                OrderID = 001,
+                OrderDate = DateTime.Now,
+                PType = PaymentType.Book
+            };
+            OrderProcessing orderProcessingService = new OrderProcessing();
+            orderProcessingService.ProcessOrder(ord);
+            List<string> checkList = new List<string>()
+            {
+                "Generate Dulicate Packing Slip",
+                "Generate Comission Payment To Agent"
+            };
+
+            Assert.AreEqual(checkList[0], Constants.OrderStatuses[0]);
+            Assert.AreEqual(checkList[1], Constants.OrderStatuses[1]);
+        }
     }
 }
