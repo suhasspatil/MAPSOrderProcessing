@@ -115,5 +115,26 @@ namespace OrderProcessingUnitTesting
             Assert.AreEqual(checkList[1], Constants.OrderStatuses[1]);
             
         }
+
+        [TestMethod]
+        public void testRuleForVideoLearningtoSki()
+        {
+            Order ordUpgradeMembership = new Order
+            {
+                OrderID = 001,
+                OrderDate = DateTime.Now,
+                PType = PaymentType.Video
+            };
+            OrderProcessing orderProcessingService = new OrderProcessing();
+
+            orderProcessingService.ProcessOrder(ordUpgradeMembership);
+            List<string> checkList = new List<string>()
+            {
+                "Add Free Aid Video To Packing Slip"
+            };
+
+            Assert.AreEqual(checkList[0], Constants.OrderStatuses[0]);            
+
+        }
     }
 }
